@@ -309,8 +309,7 @@ if(implemented(zip)){
 
 ////////////////////////////////////////////////////////////////////////////////
 // 20.
-// Implement the 'unzip' function which transforms a list of pairs into a
-// list of first components and a list of second components.
+// Implement the 'unzip' function which transforms a list of pairs into a pair of list.
 //
 // Signature: unzip => pairs => ...
 
