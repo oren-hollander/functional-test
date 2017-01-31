@@ -296,7 +296,7 @@ if(implemented(reverse2)){
 // corresponding pairs. If one input list is short,
 // excess elements of the longer list are discarded.
 //
-// Signature: zip => as => bs => ...
+// Signature: zip = as => bs => ...
 
 if(implemented(zip)){
   expect('Zipping empty lists', zip (Nil) (Nil), Nil)
@@ -312,7 +312,7 @@ if(implemented(zip)){
 // Implement the 'unzip' function which transforms a list of pairs into a
 // list of first components and a list of second components.
 //
-// Signature: unzip => pairs => ...
+// Signature: unzip = pairs => ...
 
 if(implemented(unzip)){
   expect('unzipping empty lists', unzip (Nil), pair (Nil) (Nil))
