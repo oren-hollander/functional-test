@@ -296,6 +296,8 @@ if(implemented(reverse2)){
 // corresponding pairs. If one input list is short,
 // excess elements of the longer list are discarded.
 //
+// Use 'pair' to pair two elements
+//
 // Signature: zip => as => bs => ...
 
 if(implemented(zip)){
@@ -311,6 +313,8 @@ if(implemented(zip)){
 // 20.
 // Implement the 'unzip' function which transforms a list of pairs into a
 // list of first components and a list of second components.
+//
+// Use 'fst' and 'snd' to get the first and second components of a pair respectively
 //
 // Signature: unzip => pairs => ...
 
