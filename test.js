@@ -57,7 +57,7 @@ const log = (message, color) => {
   output.appendChild(line)
 }
 
-const expect = (message, expected, actual) => {
+const expect = (message, actual, expected) => {
   if(equals (expected, actual))
     log(`OK ...... ${message}: ${show(expected)} is ${show(actual)}`, 'green')
   else
