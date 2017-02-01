@@ -1,3 +1,5 @@
+'use strict'
+
 // A few helper functions
 
 // 'flip' is a higher order function that given a binary function returns a

@@ -1,3 +1,5 @@
+'use strict'
+
 const Nil = 'NIL'
 
 const cons = head => tail => ({_head: head, _tail: tail})

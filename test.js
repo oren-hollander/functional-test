@@ -1,3 +1,5 @@
+'use strict'
+
 const output = document.getElementById('output')
 
 const isList = value => value === Nil || typeof value === 'object' && value._head && value._tail
@@ -44,10 +46,8 @@ function equals (a, b) {
       : a === b
 }
 
-const implemented = func => typeof func !== 'undefined'
-
-const test = (implementation, code) => {
-  if(implemented(implementation)){
+const test = (implemented, code) => {
+  if(implemented === 'function'){
     try {
       code()
     }

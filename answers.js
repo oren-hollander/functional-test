@@ -1,3 +1,5 @@
+'use strict'
+
 // 1.
 const nil = list => list === Nil
 

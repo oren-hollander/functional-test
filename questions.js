@@ -1,3 +1,5 @@
+'use strict'
+
 /*
 
 In this test, a basic implementation of a linked list data structure is given.
@@ -120,7 +122,7 @@ Good luck!
 //
 // Signature: const nil = list => ...
 
-test(nil, _ => {
+test(typeof nil, _ => {
   expect(' 1. nil on empty list', nil (Nil), true)
   expect(' 1. nil on non-empty list', nil (List(1, 2, 3)), false)
 })
@@ -132,7 +134,7 @@ test(nil, _ => {
 //
 // Signature: const init = list => ...
 
-test(init, _ => {
+test(typeof init, _ => {
   expect(' 2. the first element in the init of a list', head (init (List(1, 2, 3))), 1)
   expect(' 2. the second element in the init of a list', head (tail (init (List(1, 2, 3)))), 2)
   expect(' 2. the init length should be 2', tail (tail (init (List(1, 2, 3)))), Nil)
@@ -144,7 +146,7 @@ test(init, _ => {
 //
 // Signature: const last = list => ...
 
-test(last, _ => {
+test(typeof last, _ => {
   expect(' 3. tail of a list', last (List(1, 2, 3)), 3)
   expect(' 3. tail of a singleton list', last (List(1)), 1)
 })
@@ -156,7 +158,7 @@ test(last, _ => {
 //
 // Signature: const elem = e => list => ...
 
-test(elem, _ => {
+test(typeof elem, _ => {
   expect(' 4. Element should not be found in an empty list', elem (1) (Nil), false)
   expect(' 4. Existing element is first', elem (1) (List(1, 2, 3)), true)
   expect(' 4. Existing element is last', elem (1) (List(3, 2, 1)), true)
@@ -170,7 +172,7 @@ test(elem, _ => {
 //
 // Signature: const length = list => ...
 
-test(length, _ => {
+test(typeof length, _ => {
   expect(' 5. The length of an empty list should be 0', length (Nil), 0)
   expect(' 5. The length of a singleton list should be 1', length (List(1)), 1)
   expect(' 5. The length of a list with 3 elements should be 3', length (List(1, 2, 3)), 3)
@@ -183,7 +185,7 @@ test(length, _ => {
 //
 // Signature: const take = n => list => ...
 
-test(take, _ => {
+test(typeof take, _ => {
   expect(' 6. Taking 0 from Nil', take (0) (Nil), Nil)
   expect(' 6. Taking 3 from Nil', take (3) (Nil), Nil)
   expect(' 6. Taking 0 from a list of 3', take (0) (List(1, 2, 3)), Nil)
@@ -200,7 +202,7 @@ test(take, _ => {
 //
 // Signature: const drop = n => list => ...
 
-test(drop, _ => {
+test(typeof drop, _ => {
   expect(' 7. Dropping 0 from Nil', drop (0) (Nil), Nil)
   expect(' 7. Dropping 3 from Nil', drop (3) (Nil), Nil)
   expect(' 7. Dropping 0 from a list of 3', drop (0) (List(1, 2, 3)), List(1, 2, 3))
@@ -217,7 +219,7 @@ test(drop, _ => {
 //
 // Signature: const eq = as => bs => ...
 
-test(eq, _ => {
+test(typeof eq, _ => {
   expect(' 8. Empty list equality', eq (Nil) (Nil), true)
   expect(' 8. Non-empty list equality', eq (List(1, 2, 3)) (List(1, 2, 3)), true)
   expect(' 8. Long and short lists', eq (List(1, 2, 3)) (List(2, 3)), false)
@@ -233,7 +235,7 @@ test(eq, _ => {
 //
 // Signature: const concat = as => bs => ...
 
-test(concat, _ => {
+test(typeof concat, _ => {
   expect(' 9. Concating two empty lists should be an empty list', concat (Nil) (Nil), Nil)
   expect(' 9. Concating an empty list and a non-empty list should be the non-empty list', concat (Nil) (List(1, 2, 3)), List(1, 2, 3))
   expect(' 9. Concating a non-empty list and an empty list should be the non-empty list', concat (List(1, 2, 3)) (Nil), List(1, 2, 3))
@@ -246,7 +248,7 @@ test(concat, _ => {
 //
 // Signature: const reverse = list => ...
 
-test(reverse, _ => {
+test(typeof reverse, _ => {
   expect('10. Reversing an empty list is the empty list', reverse (Nil), Nil)
   expect('10. Reversing a singleton list is the same list', reverse (List(1)), List(1))
   expect('10. Reversing a list', reverse (List(1, 2, 3)), List(3, 2, 1))
@@ -260,7 +262,7 @@ test(reverse, _ => {
 //
 // Signature: const filter = p => list => ...
 
-test(filter, _ => {
+test(typeof filter, _ => {
   expect('11. Filtering an empty list ', filter (constant (true)) (Nil), Nil)
   expect('11. Filtering an empty list', filter (constant (false)) (Nil), Nil)
   const odd = x => x % 2 !== 0
@@ -275,7 +277,7 @@ test(filter, _ => {
 // 'f's signature: const f = e => ... where e is an element in the list
 // Signature: const map = f => list => ...
 
-test(map, _ => {
+test(typeof map, _ => {
   const square = x => x ** 2
   expect('12. Mapping over an empty list', map (square) (Nil), Nil)
   expect('12. Mapping with identity', map (id) (List(1, 2, 3)), List(1, 2, 3))
@@ -294,7 +296,7 @@ test(map, _ => {
 //
 // Signature: const foldl = f => z => list => ...
 
-test(foldl, _ => {
+test(typeof foldl, _ => {
   const plus = a => b => a + b
   const minus = a => b => a - b
   expect('13. Left folding an empty list to be the staring value', foldl(plus)(0)(Nil), 0)
@@ -313,7 +315,7 @@ test(foldl, _ => {
 //
 // Signature: const foldr = f => z => list => ...
 
-test(foldr, _ => {
+test(typeof foldr, _ => {
   const plus = a => b => a + b
   const minus = a => b => a - b
   expect('14. Right folding an empty list to be the staring value', foldr(plus)(0)(Nil), 0)
@@ -328,7 +330,7 @@ test(foldr, _ => {
 //
 // Signature: const copy = list => ...
 
-test(copy, _ => {
+test(typeof copy, _ => {
   expect('15. Copy an empty list', copy (Nil), Nil)
   expect('15. Copy a singleton list', copy (List(1)), List(1))
   expect('15. Copy a list', copy (List(1, 2, 3)), List(1, 2, 3))
@@ -341,7 +343,7 @@ test(copy, _ => {
 //
 // Signature: const copy2 = list => ...
 
-test(copy2, _ => {
+test(typeof copy2, _ => {
   expect('16. Copy an empty list', copy2 (Nil), Nil, eq)
   expect('16. Copy a singleton list', copy2 (List(1)), List(1))
   expect('16. Copy a list', copy2 (List(1, 2, 3)), List(1, 2, 3))
@@ -354,7 +356,7 @@ test(copy2, _ => {
 //
 // Signature: const map2 = f => list => ...
 
-test(map2, _ => {
+test(typeof map2, _ => {
   const square = x => x ** 2
   expect('17. Mapping over an empty list', map2 (square) (Nil), Nil)
   expect('17. Mapping over a singleton list', map2 (square) (List(2)), List(4))
@@ -368,7 +370,7 @@ test(map2, _ => {
 //
 // Signature: const reverse2 = list => ...
 
-test(reverse2, _ => {
+test(typeof reverse2, _ => {
   expect('18. Reversing an empty list is the empty list', reverse2 (Nil), Nil)
   expect('18. Reversing a singleton list is the same list', reverse2 (List(1)), List(1))
   expect('18. Reversing a list', reverse2 (List(1, 2, 3)), List(3, 2, 1))
@@ -382,7 +384,7 @@ test(reverse2, _ => {
 //
 // Signature: const zip = as => bs => ...
 
-test(zip, _ => {
+test(typeof zip, _ => {
   expect('19. Zipping empty lists', zip (Nil) (Nil), Nil)
   expect('19. Zipping an empty list and a list', zip (Nil) (List(1, 2, 3)), Nil)
   expect('19. Zipping a list and an empty list', zip (List(1, 2, 3)) (Nil), Nil)
@@ -398,7 +400,7 @@ test(zip, _ => {
 //
 // Signature: const unzip = pairs => ...
 
-test(unzip, _ => {
+test(typeof unzip, _ => {
   expect('20. unzipping empty lists', unzip (Nil), pair (Nil) (Nil))
   expect('20. unzippint a list', unzip (List(pair (1) (10), pair (2) (20), pair (3) (30))), pair (List(1, 2, 3)) (List(10, 20, 30)))
 })
