@@ -195,7 +195,7 @@ test(take, _ => {
 
 ////////////////////////////////////////////////////////////////////////////////
 // 7.
-// Implement the 'drop' function which return the suffix of list of length n.
+// Implement the 'drop' function which return the suffix of list after n elements.
 // If n > length(list), return Nil
 //
 // Signature: const drop = n => list => ...
