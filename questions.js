@@ -30,6 +30,8 @@ The implementation of list in this test has the following building blocks:
 const myEmptyList = Nil
 
 - cons -
+Type: cons :: a -> [a] -> [a]
+
 'cons' is the list constructor. It is a function that takes a 'head' and 'tail'
 and returns a new list. The 'head' is any JavaScript value and the 'tail' is
 a list. This is how you use 'cons':
@@ -39,6 +41,8 @@ const myTwoElementList = cons (1) (mySingletonList) // This will return the list
 const myThreeElementList = cons (1) (cons (2) (cons (3) (Nil))) // This will return the list: [1, 2, 3]
 
 - head -
+Type: head :: [a] -> a
+
 'head' is a function that takes a non-empty list and returns its head. The head
 is the first element in the list. This is how you use 'head':
 
@@ -46,6 +50,8 @@ const myHead = head (myThreeElementList) // This will return 1
 const noHead = head (Nil) // This will throw an error since the list is empty
 
 - tail -
+Type: tail :: [a] -> [a]
+
 'tail' is a funcation that takes a non-empty list and returns its tail. The tail
 is a list with all elements except for the first one. This is how you use 'tail':
 
@@ -68,6 +74,8 @@ failure.
 In your answers you may use the following functions:
 
 - flip -
+Type: flip :: (a -> b -> c) -> (b -> a -> c)
+
 'flip' is a higher order function that given a binary function returns a
 binary function which invokes the given function with the arguments flipped
 
@@ -80,6 +88,7 @@ div (2) (5) // This will result in 0.4
 flip (div) (2) (5) // This will result in 2.5
 
 - compose -
+Type: compose :: (b -> c) -> (a -> b) -> (a -> c)
 'compose' does function composition
 
 const compose = f => g => x => f (g (x))
@@ -91,6 +100,8 @@ square (3) // This will result in 9
 compose (square) (square) (3) // This will result in 81
 
 - id -
+Type: id :: a -> a
+
 'id' is identity function
 
 const id = x => x
@@ -100,6 +111,8 @@ For example:
 id (42) // This will result in 42
 
 - constant =
+Type: constant :: a -> b -> a
+
 'constant' is the constant function
 
 const constant = x => _ => x
@@ -120,6 +133,7 @@ Good luck!
 // 1.
 // Implement the 'nil' function which returns true if the list is Nil and false otherwise
 //
+// Type: nil :: [a] -> boolean
 // Signature: const nil = list => ...
 
 test(typeof nil, _ => {
@@ -132,6 +146,7 @@ test(typeof nil, _ => {
 // Implement the 'init' function which returns all the elements of a
 // list except the last one. The list must be non-empty
 //
+// Type: init :: [a] -> [a]
 // Signature: const init = list => ...
 
 test(typeof init, _ => {
@@ -144,6 +159,7 @@ test(typeof init, _ => {
 // 3.
 // Implement the 'last' function which returns the last element in the list
 //
+// Type: last :: [a] -> a
 // Signature: const last = list => ...
 
 test(typeof last, _ => {
@@ -156,6 +172,7 @@ test(typeof last, _ => {
 // Implement the 'elem' function which return true if the element occurs in the
 // list and false otherwise
 //
+// Type: elem :: a -> [a] -> boolean
 // Signature: const elem = e => list => ...
 
 test(typeof elem, _ => {
@@ -170,6 +187,7 @@ test(typeof elem, _ => {
 // 5.
 // Implement the 'length' function which returns the number of elements in the list
 //
+// Type: length :: [a] -> number
 // Signature: const length = list => ...
 
 test(typeof length, _ => {
@@ -183,6 +201,7 @@ test(typeof length, _ => {
 // Implement the 'take' function which return the prefix of list of length n.
 // If n > length(list), return list
 //
+// Type: take :: number -> [a] -> [a]
 // Signature: const take = n => list => ...
 
 test(typeof take, _ => {
@@ -200,6 +219,7 @@ test(typeof take, _ => {
 // Implement the 'drop' function which returns the suffix of list after the first n elements.
 // If n > length(list), return Nil
 //
+// Type: drop :: number -> [a] -> [a]
 // Signature: const drop = n => list => ...
 
 test(typeof drop, _ => {
@@ -217,6 +237,7 @@ test(typeof drop, _ => {
 // Implement the 'eq' function which returns 'true' if the lists are equal
 // and 'false' otherwise
 //
+// Type: eq :: [a] -> [a] -> boolean
 // Signature: const eq = as => bs => ...
 
 test(typeof eq, _ => {
@@ -233,6 +254,7 @@ test(typeof eq, _ => {
 // 9.
 // Implement the 'concat' function which concatenates two lists
 //
+// Type: concat :: [a] -> [a] -> [a]
 // Signature: const concat = as => bs => ...
 
 test(typeof concat, _ => {
@@ -246,6 +268,7 @@ test(typeof concat, _ => {
 // 10.
 // Implement the 'reverse' function which reverses the list
 //
+// Type: reverse :: [a] -> [a]
 // Signature: const reverse = list => ...
 
 test(typeof reverse, _ => {
@@ -260,6 +283,7 @@ test(typeof reverse, _ => {
 // (a unary function returning a boolean) and a list and returns the list of
 // those elements that satisfy the predicate
 //
+// Type: filter :: (a -> boolean) -> [a] -> [a]
 // Signature: const filter = p => list => ...
 
 test(typeof filter, _ => {
@@ -275,6 +299,8 @@ test(typeof filter, _ => {
 // unary function f to each element in the list
 //
 // 'f's signature: const f = e => ... where e is an element in the list
+//
+// Type: map :: (a -> b) -> [a] -> [b]
 // Signature: const map = f => list => ...
 
 test(typeof map, _ => {
@@ -294,6 +320,7 @@ test(typeof map, _ => {
 // 'f's signature: const f = z => e => ...
 // where z is the reduced value and e is the list element
 //
+// Type: foldl :: (b -> a -> b) -> b -> [a] -> b
 // Signature: const foldl = f => z => list => ...
 
 test(typeof foldl, _ => {
@@ -313,6 +340,7 @@ test(typeof foldl, _ => {
 // 'f's signature: const f = e => z => ...
 // where e is the list element and z is the reduced value
 //
+// Type: foldr :: (a -> b -> b) -> b -> [a] -> b
 // Signature: const foldr = f => z => list => ...
 
 test(typeof foldr, _ => {
@@ -328,6 +356,7 @@ test(typeof foldr, _ => {
 // Implement the 'copy' function which duplicates the list.
 // Use the 'foldl' function
 //
+// Type: copy :: [a] -> [a]
 // Signature: const copy = list => ...
 
 test(typeof copy, _ => {
@@ -341,6 +370,7 @@ test(typeof copy, _ => {
 // Implement the 'copy2' function which duplicates the list.
 // Use the 'foldr' function
 //
+// Type: copy2 :: [a] -> [a]
 // Signature: const copy2 = list => ...
 
 test(typeof copy2, _ => {
@@ -354,6 +384,7 @@ test(typeof copy2, _ => {
 // Implement the 'map2' function. It should be similar to 'map'.
 // Use the 'foldr' function
 //
+// Type: map2 :: (a -> b) -> [a] -> [b]
 // Signature: const map2 = f => list => ...
 
 test(typeof map2, _ => {
@@ -368,6 +399,7 @@ test(typeof map2, _ => {
 // Implelemt the 'reverse2' function. It should be similar to 'reverse'.
 // Use the 'foldl' function
 //
+// Type: reverse2 :: [a] -> [a]
 // Signature: const reverse2 = list => ...
 
 test(typeof reverse2, _ => {
@@ -376,12 +408,31 @@ test(typeof reverse2, _ => {
   expect('18. Reversing a list', reverse2 (List(1, 2, 3)), List(3, 2, 1))
 })
 
+/*
+
+For the following questions, we are introducing another data structure - pair
+
+A pair has two elements, the first and the second. To create a pair:
+
+const myPair = pair (1) (2) // This is the pair (1, 2)
+
+To extract the first element from the pair:
+
+const first = fst (myPair) // This will result in 1
+
+To extract the second element from the pair:
+
+const second = snd (myPair) // This will result in 2
+
+*/
+
 ////////////////////////////////////////////////////////////////////////////////
 // 19.
 // Implement the 'zip' function which takes two lists and returns a list of
 // corresponding pairs. If one input list is short,
 // excess elements of the longer list are discarded.
 //
+// Type: zip :: [a] -> [b] -> [(a, b)]
 // Signature: const zip = as => bs => ...
 
 test(typeof zip, _ => {
@@ -398,6 +449,7 @@ test(typeof zip, _ => {
 // Implement the 'unzip' function which transforms a list of pairs into a
 // list of first components and a list of second components.
 //
+// Type: unzip :: [(a, b)] -> ([a], [b])
 // Signature: const unzip = pairs => ...
 
 test(typeof unzip, _ => {
