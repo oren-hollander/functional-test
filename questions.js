@@ -1,34 +1,118 @@
-// In this test, an implementation of a linked list data structure is given
-// A list is a data structure with 'head', which can be anything, and a 'tail', which is a list
-// 'Nil' is an empty lists
-// 'cons' is a function that takes a 'head' and a 'tail' and returns a list
+/*
+
+In this test, a basic implementation of a linked list data structure is given.
+
+In each question below, you should implement a function that passes all the
+given tests according to the instructions.
+
+When implementing a function, follow thies rules:
+
+- Don't use 'var' or 'let', only 'const'
+- Your functions should accept only one argument
+
+The last rule means that you should do this:
+
+const add = a => b => a + b
+const result = add (1) (2)
+
+instead of this:
+
+const add = (a, b) => a + b
+const result = add(1, 2)
+
+The implementation of list in this test has the following building blocks:
+
+- Nil -
+'Nil' is the empty list. This is how you use 'Nil':
+
+const myEmptyList = Nil
+
+- cons -
+'cons' is the list constructor. It is a function that takes a 'head' and 'tail'
+and returns a new list. The 'head' is any JavaScript value and the 'tail' is
+a list. This is how you use 'cons':
+
+const mySingletonList = cons (2) (Nil) // This will return the list: [2]
+const myTwoElementList = cons (1) (mySingletonList) // This will return the list: [1, 2]
+const myThreeElementList = cons (1) (cons (2) (cons (3) (Nil))) // This will return the list: [1, 2, 3]
+
+- head -
+'head' is a function that takes a non-empty list and returns its head. The head
+is the first element in the list. This is how you use 'head':
+
+const myHead = head (myThreeElementList) // This will return 1
+const noHead = head (Nil) // This will throw an error since the list is empty
+
+- tail -
+'tail' is a funcation that takes a non-empty list and returns its tail. The tail
+is a list with all elements except for the first one. This is how you use 'tail':
+
+const myTail = tail (myThreeElementList) // This will return the list: [2, 3]
+const noTail = tail (Nil) // This will throw an error since the list is not empty
+
+As you can see, the following will hold for any non-empty list l:
+
+cons (head (l)) (tail (l)) === l
+
+--------------------------------------------------------------------------------
+
+Each question has a short description followed by some tests.
+To start implementing the question functions, open the list.html file in chrome.
+Go over the questions one by one and implement the required function.
+When you are done with a question, refresh chrome and make sure the tests pass.
+The html page will present the test results in green for success and red for
+failure.
+
+In your answers you may use the following functions:
+
+- flip -
+'flip' is a higher order function that given a binary function returns a
+binary function which invokes the given function with the arguments flipped
+
+const flip = f => a => b => f (b) (a)
+
+For example:
+
+const div = a => b => a / b
+div (2) (5) // This will result in 0.4
+flip (div) (2) (5) // This will result in 2.5
+
+- compose -
+'compose' does function composition
+
+const compose = f => g => x => f (g (x))
+
+For example:
+
+const square = x => x ** 2
+square (3) // This will result in 9
+compose (square) (square) (3) // This will result in 81
+
+- id -
+'id' is identity function
+
+const id = x => x
+
+For example:
+
+id (42) // This will result in 42
+
+- constant =
+'constant' is the constant function
+
+const constant = x => _ => x
+
+For examples:
+
+constant (1) (1) // This will result in 1
+constant (1) (2) // This will result in 1
+constant (1) ('hello') // This will result in 1
+constant (1) () // This will result in 1
 
 
-// In each question below, you should implement a function that passes all the given tests
-// according to the instructions.
-// You can't use 'var' or 'let', only 'const'
-// You can't use dot notation - i.e., instead of cons(1, Nil)._head do head(cons(1, Nil))
-// Your functions should accept only one argument
-//
-// In each question, implement the required functoin start by uncommenting the expectations.
-// Then, proceed and implement the required function and make sure all expectations
-// are met by reloading the HTML file in chrome and making sure the console has no errors
+Good luck!
 
-// In your answers you may use the following functions:
-
-// 'flip' is a higher order function that given a binary function returns a
-// binary function which invokes the given function with the arguments flipped
-// const flip = f => a => b => f (b) (a)
-
-// 'compose' - function composition
-// const compose = f => g => x => f (g (x))
-
-// 'id' - The identity function
-// const id = x => x
-
-// 'constant' - the constant function
-// const constant = x => _ => x
-
+*/
 
 ////////////////////////////////////////////////////////////////////////////////
 // 1.
