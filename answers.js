@@ -98,7 +98,7 @@ const zip = as => bs =>
     ? Nil
     : cons (pair (head (as)) (head (bs))) (zip (tail (as)) (tail (bs)))
 
-20.
+// 20.
 const unzip = pairs =>
   nil (pairs)
     ? pair (Nil) (Nil)
