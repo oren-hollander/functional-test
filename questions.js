@@ -195,7 +195,7 @@ test(take, _ => {
 
 ////////////////////////////////////////////////////////////////////////////////
 // 7.
-// Implement the 'drop' function which return the suffix of list of length n.
+// Implement the 'drop' function which returns the suffix of list after the first n elements.
 // If n > length(list), return Nil
 //
 // Signature: const drop = n => list => ...
@@ -380,7 +380,7 @@ test(reverse2, _ => {
 // corresponding pairs. If one input list is short,
 // excess elements of the longer list are discarded.
 //
-// Signature: zip => as => bs => ...
+// Signature: const zip = as => bs => ...
 
 test(zip, _ => {
   expect('19. Zipping empty lists', zip (Nil) (Nil), Nil)
@@ -396,7 +396,7 @@ test(zip, _ => {
 // Implement the 'unzip' function which transforms a list of pairs into a
 // list of first components and a list of second components.
 //
-// Signature: unzip => pairs => ...
+// Signature: const unzip = pairs => ...
 
 test(unzip, _ => {
   expect('20. unzipping empty lists', unzip (Nil), pair (Nil) (Nil))
