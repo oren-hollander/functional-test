@@ -46,6 +46,17 @@ function equals (a, b) {
 
 const implemented = func => typeof func !== 'undefined'
 
+const test = (implementation, code) => {
+  if(implemented(implementation)){
+    try {
+      code()
+    }
+    catch (e) {
+      log(`ERROR ... Exception thrown: ${e}`, 'red')
+    }
+  }
+}
+
 const log = (message, color) => {
   const line = document.createElement('div');
   line.style.color = 'white'
@@ -53,6 +64,7 @@ const log = (message, color) => {
   line.style.margin = '1px'
   line.style.padding = '3px'
   line.style.fontFamily = 'Monospace'
+  line.style.whiteSpace = 'pre'
   line.appendChild(document.createTextNode(message))
   output.appendChild(line)
 }
@@ -61,5 +73,16 @@ const expect = (message, expected, actual) => {
   if(equals (expected, actual))
     log(`OK ...... ${message}: ${show(expected)} is ${show(actual)}`, 'green')
   else
-    log(`ERROR ... ${message}: expected ${show(expected)}, but actual is ${show(actual)}`, 'red')
+    log(`ERROR ... ${message}: Expected ${show(expected)}, but actual is ${show(actual)}`, 'red')
+}
+
+const expectError = (message, f) => {
+  try {
+    f()
+  }
+  catch (e) {
+    log(`OK ...... ${message}: Error thrown `, 'green')
+  }
+
+  log(`ERROR ... ${message}: Expected error to be thrown`, 'red')
 }

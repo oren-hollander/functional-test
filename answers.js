@@ -2,10 +2,10 @@
 const nil = list => list === Nil
 
 // 2.
-const init = list => nil (tail (list)) ? Nil : cons (head (list)) (init (tail (list)))
+const init = list => ( t => nil (t) ? Nil : cons (head (list)) (init (t)) ) (tail (list))
 
 // 3.
-const last = list => nil (tail (list)) ? head (list) : last (tail (list))
+const last = list => ( t => nil (t) ? head (list) : last (t) ) (tail (list))
 
 // 4.
 const elem = e => list =>
@@ -20,11 +20,13 @@ const length = list => nil (list) ? 0 : 1 + length (tail (list))
 
 // 6.
 const eq = as => bs =>
-  nil (as) && nil (bs)
+ ( asEmpty => bsEmpty =>
+  asEmpty && bsEmpty
     ? true
-    : nil (as) || nil (bs)
+    : asEmpty || bsEmpty
       ? false
       : head (as) === head (bs) && eq (tail (as)) (tail (bs))
+ ) (nil (as)) (nil (bs))
 
 // 7.
 const take = n => list =>
@@ -54,9 +56,11 @@ const reverse = list =>
 const filter = p => list =>
   nil (list)
     ? Nil
-    : p (head (list))
-      ? cons (head (list)) (filter (p) (tail (list)))
-      : filter (p) (tail (list))
+    : ( h => t =>
+      p (h)
+        ? cons (h) (filter (p) (t))
+        : filter (p) (t)
+      ) (head (list)) (tail (list))
 
 //12.
 const map = f => list =>
@@ -94,8 +98,10 @@ const zip = as => bs =>
     ? Nil
     : cons (pair (head (as)) (head (bs))) (zip (tail (as)) (tail (bs)))
 
-// 20.
+20.
 const unzip = pairs =>
   nil (pairs)
     ? pair (Nil) (Nil)
-    : pair (cons (fst (head (pairs))) (fst (unzip (tail (pairs))))) (cons (snd (head (pairs))) (snd (unzip (tail (pairs)))))
+    : ( p => ps =>
+        pair (cons (fst (p)) (fst (ps))) (cons (snd (p)) (snd (ps)))
+      ) (head (pairs)) (unzip (tail (pairs)))

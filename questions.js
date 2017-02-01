@@ -120,10 +120,10 @@ Good luck!
 //
 // Signature: const nil = list => ...
 
-if(implemented(nil)){
-  expect('nil on empty list', nil (Nil), true)
-  expect('nil on non-empty list', nil (List(1, 2, 3)), false)
-}
+test(nil, _ => {
+  expect(' 1. nil on empty list', nil (Nil), true)
+  expect(' 1. nil on non-empty list', nil (List(1, 2, 3)), false)
+})
 
 ////////////////////////////////////////////////////////////////////////////////
 // 2.
@@ -132,11 +132,11 @@ if(implemented(nil)){
 //
 // Signature: const init = list => ...
 
-if(implemented(init)){
-  expect('the first element in the init of a list', head (init (List(1, 2, 3))), 1)
-  expect('the second element in the init of a list', head (tail (init (List(1, 2, 3)))), 2)
-  expect('the init length should be 2', tail (tail (init (List(1, 2, 3)))), Nil)
-}
+test(init, _ => {
+  expect(' 2. the first element in the init of a list', head (init (List(1, 2, 3))), 1)
+  expect(' 2. the second element in the init of a list', head (tail (init (List(1, 2, 3)))), 2)
+  expect(' 2. the init length should be 2', tail (tail (init (List(1, 2, 3)))), Nil)
+})
 
 ////////////////////////////////////////////////////////////////////////////////
 // 3.
@@ -144,10 +144,10 @@ if(implemented(init)){
 //
 // Signature: const last = list => ...
 
-if(implemented(last)){
-  expect('tail of a list', last (List(1, 2, 3)), 3)
-  expect('tail of a singleton list', last (List(1)), 1)
-}
+test(last, _ => {
+  expect(' 3. tail of a list', last (List(1, 2, 3)), 3)
+  expect(' 3. tail of a singleton list', last (List(1)), 1)
+})
 
 ////////////////////////////////////////////////////////////////////////////////
 // 4.
@@ -156,13 +156,13 @@ if(implemented(last)){
 //
 // Signature: const elem = e => list => ...
 
-if(implemented(elem)){
-  expect('Element should not be found in an empty list', elem (1) (Nil), false)
-  expect('Existing element is first', elem (1) (List(1, 2, 3)), true)
-  expect('Existing element is last', elem (1) (List(3, 2, 1)), true)
-  expect('Existing element in a singleton list', elem (1) (List(1)), true)
-  expect('Non-existing element', elem (4) (List(1, 2, 3)), false)
-}
+test(elem, _ => {
+  expect(' 4. Element should not be found in an empty list', elem (1) (Nil), false)
+  expect(' 4. Existing element is first', elem (1) (List(1, 2, 3)), true)
+  expect(' 4. Existing element is last', elem (1) (List(3, 2, 1)), true)
+  expect(' 4. Existing element in a singleton list', elem (1) (List(1)), true)
+  expect(' 4. Non-existing element', elem (4) (List(1, 2, 3)), false)
+})
 
 ////////////////////////////////////////////////////////////////////////////////
 // 5.
@@ -170,11 +170,11 @@ if(implemented(elem)){
 //
 // Signature: const length = list => ...
 
-if(implemented(length)){
-  expect('The length of an empty list should be 0', length (Nil), 0)
-  expect('The length of a singleton list should be 1', length (List(1)), 1)
-  expect('The length of a list with 3 elements should be 3', length (List(1, 2, 3)), 3)
-}
+test(length, _ => {
+  expect(' 5. The length of an empty list should be 0', length (Nil), 0)
+  expect(' 5. The length of a singleton list should be 1', length (List(1)), 1)
+  expect(' 5. The length of a list with 3 elements should be 3', length (List(1, 2, 3)), 3)
+})
 
 ////////////////////////////////////////////////////////////////////////////////
 // 6.
@@ -183,15 +183,15 @@ if(implemented(length)){
 //
 // Signature: const take = n => list => ...
 
-if(implemented(take)){
-  expect('Taking 0 from Nil', take (0) (Nil), Nil)
-  expect('Taking 3 from Nil', take (3) (Nil), Nil)
-  expect('Taking 0 from a list of 3', take (0) (List(1, 2, 3)), Nil)
-  expect('Taking 1 from a list of 3', take (1) (List(1, 2, 3)), List(1))
-  expect('Taking 2 from a list of 3', take (2) (List(1, 2, 3)), List(1, 2))
-  expect('Taking 3 from a list of 3', take (3) (List(1, 2, 3)), List(1, 2, 3))
-  expect('Taking 4 from a list of 3', take (4) (List(1, 2, 3)), List(1, 2, 3))
-}
+test(take, _ => {
+  expect(' 6. Taking 0 from Nil', take (0) (Nil), Nil)
+  expect(' 6. Taking 3 from Nil', take (3) (Nil), Nil)
+  expect(' 6. Taking 0 from a list of 3', take (0) (List(1, 2, 3)), Nil)
+  expect(' 6. Taking 1 from a list of 3', take (1) (List(1, 2, 3)), List(1))
+  expect(' 6. Taking 2 from a list of 3', take (2) (List(1, 2, 3)), List(1, 2))
+  expect(' 6. Taking 3 from a list of 3', take (3) (List(1, 2, 3)), List(1, 2, 3))
+  expect(' 6. Taking 4 from a list of 3', take (4) (List(1, 2, 3)), List(1, 2, 3))
+})
 
 ////////////////////////////////////////////////////////////////////////////////
 // 7.
@@ -200,15 +200,15 @@ if(implemented(take)){
 //
 // Signature: const drop = n => list => ...
 
-if(implemented(drop)){
-  expect('Dropping 0 from Nil', drop (0) (Nil), Nil)
-  expect('Dropping 3 from Nil', drop (3) (Nil), Nil)
-  expect('Dropping 0 from a list of 3', drop (0) (List(1, 2, 3)), List(1, 2, 3))
-  expect('Dropping 1 from a list of 3', drop (1) (List(1, 2, 3)), List(2, 3))
-  expect('Dropping 2 from a list of 3', drop (2) (List(1, 2, 3)), List(3))
-  expect('Dropping 3 from a list of 3', drop (3) (List(1, 2, 3)), Nil)
-  expect('Dropping 4 from a list of 3', drop (4) (List(1, 2, 3)), Nil)
-}
+test(drop, _ => {
+  expect(' 7. Dropping 0 from Nil', drop (0) (Nil), Nil)
+  expect(' 7. Dropping 3 from Nil', drop (3) (Nil), Nil)
+  expect(' 7. Dropping 0 from a list of 3', drop (0) (List(1, 2, 3)), List(1, 2, 3))
+  expect(' 7. Dropping 1 from a list of 3', drop (1) (List(1, 2, 3)), List(2, 3))
+  expect(' 7. Dropping 2 from a list of 3', drop (2) (List(1, 2, 3)), List(3))
+  expect(' 7. Dropping 3 from a list of 3', drop (3) (List(1, 2, 3)), Nil)
+  expect(' 7. Dropping 4 from a list of 3', drop (4) (List(1, 2, 3)), Nil)
+})
 
 ////////////////////////////////////////////////////////////////////////////////
 // 8.
@@ -217,15 +217,15 @@ if(implemented(drop)){
 //
 // Signature: const eq = as => bs => ...
 
-if(implemented(eq)){
-  expect('Empty list equality', eq (Nil) (Nil), true)
-  expect('Non-empty list equality', eq (List(1, 2, 3)) (List(1, 2, 3)), true)
-  expect('Long and short lists', eq (List(1, 2, 3)) (List(2, 3)), false)
-  expect('Short and long lists', eq (List(1, 2)) (List(1, 2, 3)), false)
-  expect('Same length lists with non-equal element', eq (List(1, 2, 3)) (List(1, 2, 4)), false)
-  expect('Empty and non-empty lists', eq (Nil) (List(1, 2, 4)), false)
-  expect('Non-empty and empty lists', eq (List(1, 2, 3)) (Nil), false)
-}
+test(eq, _ => {
+  expect(' 8. Empty list equality', eq (Nil) (Nil), true)
+  expect(' 8. Non-empty list equality', eq (List(1, 2, 3)) (List(1, 2, 3)), true)
+  expect(' 8. Long and short lists', eq (List(1, 2, 3)) (List(2, 3)), false)
+  expect(' 8. Short and long lists', eq (List(1, 2)) (List(1, 2, 3)), false)
+  expect(' 8. Same length lists with non-equal element', eq (List(1, 2, 3)) (List(1, 2, 4)), false)
+  expect(' 8. Empty and non-empty lists', eq (Nil) (List(1, 2, 4)), false)
+  expect(' 8. Non-empty and empty lists', eq (List(1, 2, 3)) (Nil), false)
+})
 
 ////////////////////////////////////////////////////////////////////////////////
 // 9.
@@ -233,12 +233,12 @@ if(implemented(eq)){
 //
 // Signature: const concat = as => bs => ...
 
-if(implemented(concat)){
-  expect('Concating two empty lists should be an empty list', concat (Nil) (Nil), Nil)
-  expect('Concating an empty list and a non-empty list should be the non-empty list', concat (Nil) (List(1, 2, 3)), List(1, 2, 3))
-  expect('Concating a non-empty list and an empty list should be the non-empty list', concat (List(1, 2, 3)) (Nil), List(1, 2, 3))
-  expect('Concating two non-empty lists should be the second list appended to the first', concat (List(1, 2)) (List(3, 4)), List(1, 2, 3, 4))
-}
+test(concat, _ => {
+  expect(' 9. Concating two empty lists should be an empty list', concat (Nil) (Nil), Nil)
+  expect(' 9. Concating an empty list and a non-empty list should be the non-empty list', concat (Nil) (List(1, 2, 3)), List(1, 2, 3))
+  expect(' 9. Concating a non-empty list and an empty list should be the non-empty list', concat (List(1, 2, 3)) (Nil), List(1, 2, 3))
+  expect(' 9. Concating two non-empty lists should be the second list appended to the first', concat (List(1, 2)) (List(3, 4)), List(1, 2, 3, 4))
+})
 
 ////////////////////////////////////////////////////////////////////////////////
 // 10.
@@ -246,11 +246,11 @@ if(implemented(concat)){
 //
 // Signature: const reverse = list => ...
 
-if(implemented(reverse)){
-  expect('Reversing an empty list is the empty list', reverse (Nil), Nil)
-  expect('Reversing a singleton list is the same list', reverse (List(1)), List(1))
-  expect('Reversing a list', reverse (List(1, 2, 3)), List(3, 2, 1))
-}
+test(reverse, _ => {
+  expect('10. Reversing an empty list is the empty list', reverse (Nil), Nil)
+  expect('10. Reversing a singleton list is the same list', reverse (List(1)), List(1))
+  expect('10. Reversing a list', reverse (List(1, 2, 3)), List(3, 2, 1))
+})
 
 ////////////////////////////////////////////////////////////////////////////////
 // 11.
@@ -260,12 +260,12 @@ if(implemented(reverse)){
 //
 // Signature: const filter = p => list => ...
 
-if(implemented(filter)) {
-  expect('Filtering an empty list ', filter (constant (true)) (Nil), Nil)
-  expect('Filtering an empty list', filter (constant (false)) (Nil), Nil)
+test(filter, _ => {
+  expect('11. Filtering an empty list ', filter (constant (true)) (Nil), Nil)
+  expect('11. Filtering an empty list', filter (constant (false)) (Nil), Nil)
   const odd = x => x % 2 !== 0
-  expect('Filtering odd numbers', filter (odd) (List(1, 2, 3, 4)), List(1, 3))
-}
+  expect('11. Filtering odd numbers', filter (odd) (List(1, 2, 3, 4)), List(1, 3))
+})
 
 ////////////////////////////////////////////////////////////////////////////////
 // 12.
@@ -275,13 +275,13 @@ if(implemented(filter)) {
 // 'f's signature: const f = e => ... where e is an element in the list
 // Signature: const map = f => list => ...
 
-if(implemented(map)){
+test(map, _ => {
   const square = x => x ** 2
-  expect('Mapping over an empty list', map (square) (Nil), Nil)
-  expect('Mapping with identity', map (id) (List(1, 2, 3)), List(1, 2, 3))
-  expect('Mapping over a singleton list', map (square) (List(2)), List(4))
-  expect('Mapping over a list', map (square) (List(1, 2, 3)), List(1, 4, 9))
-}
+  expect('12. Mapping over an empty list', map (square) (Nil), Nil)
+  expect('12. Mapping with identity', map (id) (List(1, 2, 3)), List(1, 2, 3))
+  expect('12. Mapping over a singleton list', map (square) (List(2)), List(4))
+  expect('12. Mapping over a list', map (square) (List(1, 2, 3)), List(1, 4, 9))
+})
 
 ////////////////////////////////////////////////////////////////////////////////
 // 13.
@@ -294,13 +294,13 @@ if(implemented(map)){
 //
 // Signature: const foldl = f => z => list => ...
 
-if(implemented(foldl)){
+test(foldl, _ => {
   const plus = a => b => a + b
   const minus = a => b => a - b
-  expect('Left folding an empty list to be the staring value', foldl(plus)(0)(Nil), 0)
-  expect('Left folding a list with plus', foldl(plus)(0)(List(1, 2, 3)), 6)
-  expect('Left folding a list with minus', foldl(minus)(0)(List(1, 2, 3)), -6)
-}
+  expect('13. Left folding an empty list to be the staring value', foldl(plus)(0)(Nil), 0)
+  expect('13. Left folding a list with plus', foldl(plus)(0)(List(1, 2, 3)), 6)
+  expect('13. Left folding a list with minus', foldl(minus)(0)(List(1, 2, 3)), -6)
+})
 
 ////////////////////////////////////////////////////////////////////////////////
 // 14.
@@ -313,13 +313,13 @@ if(implemented(foldl)){
 //
 // Signature: const foldr = f => z => list => ...
 
-if(implemented(foldr)){
+test(foldr, _ => {
   const plus = a => b => a + b
   const minus = a => b => a - b
-  expect('Right folding an empty list to be the staring value', foldr(plus)(0)(Nil), 0)
-  expect('Right folding a list with plus', foldr(plus)(0)(List(1, 2, 3)), 6)
-  expect('Right folding a list with minus', foldr(minus)(0)(List(1, 2, 3)), 2)
-}
+  expect('14. Right folding an empty list to be the staring value', foldr(plus)(0)(Nil), 0)
+  expect('14. Right folding a list with plus', foldr(plus)(0)(List(1, 2, 3)), 6)
+  expect('14. Right folding a list with minus', foldr(minus)(0)(List(1, 2, 3)), 2)
+})
 
 ////////////////////////////////////////////////////////////////////////////////
 // 15.
@@ -328,11 +328,11 @@ if(implemented(foldr)){
 //
 // Signature: const copy = list => ...
 
-if(implemented(copy)){
-  expect('Copy an empty list', copy (Nil), Nil)
-  expect('Copy a singleton list', copy (List(1)), List(1))
-  expect('Copy a list', copy (List(1, 2, 3)), List(1, 2, 3))
-}
+test(copy, _ => {
+  expect('15. Copy an empty list', copy (Nil), Nil)
+  expect('15. Copy a singleton list', copy (List(1)), List(1))
+  expect('15. Copy a list', copy (List(1, 2, 3)), List(1, 2, 3))
+})
 
 ////////////////////////////////////////////////////////////////////////////////
 // 16.
@@ -341,11 +341,11 @@ if(implemented(copy)){
 //
 // Signature: const copy2 = list => ...
 
-if(implemented(copy2)){
-  expect('Copy an empty list', copy2 (Nil), Nil, eq)
-  expect('Copy a singleton list', copy2 (List(1)), List(1))
-  expect('Copy a list', copy2 (List(1, 2, 3)), List(1, 2, 3))
-}
+test(copy2, _ => {
+  expect('16. Copy an empty list', copy2 (Nil), Nil, eq)
+  expect('16. Copy a singleton list', copy2 (List(1)), List(1))
+  expect('16. Copy a list', copy2 (List(1, 2, 3)), List(1, 2, 3))
+})
 
 ////////////////////////////////////////////////////////////////////////////////
 // 17.
@@ -354,12 +354,12 @@ if(implemented(copy2)){
 //
 // Signature: const map2 = f => list => ...
 
-if(implemented(map2)){
+test(map2, _ => {
   const square = x => x ** 2
-  expect('Mapping over an empty list', map2 (square) (Nil), Nil)
-  expect('Mapping over a singleton list', map2 (square) (List(2)), List(4))
-  expect('Mapping over a list', map2 (square) (List(1, 2, 3)), List(1, 4, 9))
-}
+  expect('17. Mapping over an empty list', map2 (square) (Nil), Nil)
+  expect('17. Mapping over a singleton list', map2 (square) (List(2)), List(4))
+  expect('17. Mapping over a list', map2 (square) (List(1, 2, 3)), List(1, 4, 9))
+})
 
 ////////////////////////////////////////////////////////////////////////////////
 // 18.
@@ -368,11 +368,11 @@ if(implemented(map2)){
 //
 // Signature: const reverse2 = list => ...
 
-if(implemented(reverse2)){
-  expect('Reversing an empty list is the empty list', reverse2 (Nil), Nil)
-  expect('Reversing a singleton list is the same list', reverse2 (List(1)), List(1))
-  expect('Reversing a list', reverse2 (List(1, 2, 3)), List(3, 2, 1))
-}
+test(reverse2, _ => {
+  expect('18. Reversing an empty list is the empty list', reverse2 (Nil), Nil)
+  expect('18. Reversing a singleton list is the same list', reverse2 (List(1)), List(1))
+  expect('18. Reversing a list', reverse2 (List(1, 2, 3)), List(3, 2, 1))
+})
 
 ////////////////////////////////////////////////////////////////////////////////
 // 19.
@@ -382,14 +382,14 @@ if(implemented(reverse2)){
 //
 // Signature: zip => as => bs => ...
 
-if(implemented(zip)){
-  expect('Zipping empty lists', zip (Nil) (Nil), Nil)
-  expect('Zipping an empty list and a list', zip (Nil) (List(1, 2, 3)), Nil)
-  expect('Zipping a list and an empty list', zip (List(1, 2, 3)) (Nil), Nil)
-  expect('Zipping two same-length lists', zip (List(1, 2, 3)) (List(10, 20, 30)), List(pair (1) (10), pair (2) (20), pair (3) (30)))
-  expect('Zipping two lists, the first is shorter', zip (List(1, 2, 3)) (List(10, 20, 30, 40)), List(pair (1) (10), pair (2) (20), pair (3) (30)))
-  expect('Zipping two lists, the second is shorter', zip (List(1, 2, 3, 4)) (List(10, 20, 30)), List(pair (1) (10), pair (2) (20), pair (3) (30)))
-}
+test(zip, _ => {
+  expect('19. Zipping empty lists', zip (Nil) (Nil), Nil)
+  expect('19. Zipping an empty list and a list', zip (Nil) (List(1, 2, 3)), Nil)
+  expect('19. Zipping a list and an empty list', zip (List(1, 2, 3)) (Nil), Nil)
+  expect('19. Zipping two same-length lists', zip (List(1, 2, 3)) (List(10, 20, 30)), List(pair (1) (10), pair (2) (20), pair (3) (30)))
+  expect('19. Zipping two lists, the first is shorter', zip (List(1, 2, 3)) (List(10, 20, 30, 40)), List(pair (1) (10), pair (2) (20), pair (3) (30)))
+  expect('19. Zipping two lists, the second is shorter', zip (List(1, 2, 3, 4)) (List(10, 20, 30)), List(pair (1) (10), pair (2) (20), pair (3) (30)))
+})
 
 ////////////////////////////////////////////////////////////////////////////////
 // 20.
@@ -398,7 +398,7 @@ if(implemented(zip)){
 //
 // Signature: unzip => pairs => ...
 
-if(implemented(unzip)){
-  expect('unzipping empty lists', unzip (Nil), pair (Nil) (Nil))
-  expect('unzippint a list', unzip (List(pair (1) (10), pair (2) (20), pair (3) (30))), pair (List(1, 2, 3)) (List(10, 20, 30)))
-}
+test(unzip, _ => {
+  expect('20. unzipping empty lists', unzip (Nil), pair (Nil) (Nil))
+  expect('20. unzippint a list', unzip (List(pair (1) (10), pair (2) (20), pair (3) (30))), pair (List(1, 2, 3)) (List(10, 20, 30)))
+})
