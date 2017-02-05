@@ -446,8 +446,7 @@ test(typeof zip, _ => {
 
 ////////////////////////////////////////////////////////////////////////////////
 // 20.
-// Implement the 'unzip' function which transforms a list of pairs into a
-// list of first components and a list of second components.
+// Implement the 'unzip' function which transforms a list of pairs into a pair of list.
 //
 // Type: unzip :: [(a, b)] -> ([a], [b])
 // Signature: const unzip = pairs => ...
