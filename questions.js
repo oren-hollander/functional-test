@@ -7,7 +7,7 @@ In this test, a basic implementation of a linked list data structure is given.
 In each question below, you should implement a function that passes all the
 given tests according to the instructions.
 
-When implementing a function, follow thies rules:
+When implementing a function, follow these rules:
 
 - Don't use 'var' or 'let', only 'const'
 - Your functions should accept only one argument
@@ -52,11 +52,11 @@ const noHead = head (Nil) // This will throw an error since the list is empty
 - tail -
 Type: tail :: [a] -> [a]
 
-'tail' is a funcation that takes a non-empty list and returns its tail. The tail
+'tail' is a function that takes a non-empty list and returns its tail. The tail
 is a list with all elements except for the first one. This is how you use 'tail':
 
 const myTail = tail (myThreeElementList) // This will return the list: [2, 3]
-const noTail = tail (Nil) // This will throw an error since the list is not empty
+const noTail = tail (Nil) // This will throw an error since the list is empty
 
 As you can see, the following will hold for any non-empty list l:
 
